@@ -71,3 +71,18 @@ INSERT INTO users (name, email, password_hash, role) VALUES
     'admin'
   )
 ON DUPLICATE KEY UPDATE role = 'admin';
+
+CREATE TABLE IF NOT EXISTS activity_logs (
+  id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  user_id INT UNSIGNED NOT NULL,
+  tiempo DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  metodo VARCHAR(10) NOT NULL,
+  ruta VARCHAR(255) NOT NULL,
+  estado_cod SMALLINT UNSIGNED NOT NULL,
+  PRIMARY KEY (id),
+  KEY idx_activity_logs_user_id (user_id, id),
+  CONSTRAINT fk_activity_logs_user
+    FOREIGN KEY (user_id) REFERENCES users (id)
+    ON UPDATE CASCADE
+    ON DELETE RESTRICT
+) ENGINE=InnoDB;

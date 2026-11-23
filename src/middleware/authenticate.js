@@ -1,6 +1,8 @@
 import jwt from 'jsonwebtoken';
 import { AppError } from '../errors/AppError.js';
 import { findById } from '../repositories/userRepository.js';
+import { logActivity } from './logActivity.js';
+
 
 export async function authenticate(req, res, next) {
   const [scheme, token] = (req.headers.authorization ?? '').split(' ');
@@ -21,5 +23,6 @@ export async function authenticate(req, res, next) {
   }
 
   req.user = user;
+  logActivity(req, res);
   next();
 }
