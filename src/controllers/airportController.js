@@ -4,7 +4,6 @@ import { AppError } from '../errors/AppError.js';
 import { parseId, parseOptionalCityId } from '../validators/commonValidator.js';
 import { validateAirport } from '../validators/airportValidator.js';
 
-// Traduce errores de MySQL a errores HTTP del contrato
 function translateDbError(err) {
   if (err.code === 'ER_DUP_ENTRY')
     return new AppError(409, 'IATA_CODE_ALREADY_EXISTS', 'El código IATA ya está en uso.');

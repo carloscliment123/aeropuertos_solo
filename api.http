@@ -93,7 +93,7 @@ Content-Type: application/json
 Accept: application/json
 
 {
-  "iataCode": "VAC",
+  "iataCode": "VSC",
   "name": "Aeropuerto de Valencia",
   "cityId": {{valenciaId}}
 }

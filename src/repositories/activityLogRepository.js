@@ -1,9 +1,9 @@
 import {pool} from '../config/database.js';
 
-export async function create({userId, metodo, ruta, estado_cod}) {
+export async function create({userId, metodo, ruta, estadoCod}) {
     await pool.query(
         'INSERT INTO activity_logs (user_id, metodo, ruta, estado_cod) VALUES (?,?,?,?)',
-        [userId,metodo,ruta,estado_cod]
+        [userId, metodo, ruta, estadoCod]
     );
 }
 

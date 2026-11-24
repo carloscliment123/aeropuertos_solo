@@ -13,7 +13,7 @@ const router = Router();
 router.use(authenticate);
 
 router.get('/', list);
-router.get('/with-airports', listWithAirports); // antes que cualquier /:id
+router.get('/with-airports', listWithAirports); 
 router.get('/:id/airports', listAirports);
 router.post('/', authorizeAdmin, create);
 router.put('/:id', authorizeAdmin, update);
